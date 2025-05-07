@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import TicTacToe from "./tic_tac_toe/Tictactoe.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code className=''>src/App.jsx</code> and save to test HMR
+    <div className="min-h-screen bg-gray-50 p-8">
+      {/* Header/Description */}
+      <div className="max-w-3xl mx-auto mb-12 text-center">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">My Coding Journey</h1>
+        <p className="text-lg text-gray-600 leading-relaxed">
+        This is where I experiment and build daily. Some projects are polished, others are works in progress, but each one helps me grow. Built with passion and React. 
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+      {/* Tic-Tac-Toe Container */}
+      <div className="max-w-lg mx-auto border-2 border-gray-200 rounded-xl p-6 shadow-md bg-white">
+        <TicTacToe />
+      </div>
+
+      {/* Optional Footer */}
+      <div className="mt-12 text-center text-gray-500 text-sm">
+        Made with Vite + React + Tailwind
+      </div>
+    </div>
+  );
+}
