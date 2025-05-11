@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function GameBoard({ squares, xIsNext, playedMovesNumber, onPlay }) {
   const winner = playedMovesNumber >= 5 ? calculateWinner(squares) : null;
-  
+
   let status;
   if (winner) {
     status = `Winner: ${winner}`;
@@ -21,9 +21,8 @@ function GameBoard({ squares, xIsNext, playedMovesNumber, onPlay }) {
 
   return (
     <div className="bg-gradient-to-br from-purple-50 to-lavender-100 p-4 sm:p-6 rounded-2xl shadow-lg">
-      <div className={`text-center text-2xl sm:text-3xl font-bold mb-4 ${
-        winner ? "text-purple-600 animate-pulse" : "text-purple-700"
-      }`}>
+      <div className={`text-center text-2xl sm:text-3xl font-bold mb-4 ${winner ? "text-purple-600 animate-pulse" : "text-purple-700"
+        }`}>
         {status}
       </div>
       <div className="space-y-2">
@@ -50,10 +49,9 @@ function Square({ value, onSquareClick, winner }) {
       className={`w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center
         text-4xl sm:text-5xl font-bold rounded-lg border-2
         transition-all duration-200 active:scale-95
-        ${
-          !value && !winner
-            ? "border-purple-200 hover:bg-purple-50"
-            : value === "x"
+        ${!value && !winner
+          ? "border-purple-200 hover:bg-purple-50"
+          : value === "x"
             ? "border-pink-300 bg-pink-50 text-pink-500"
             : "border-indigo-300 bg-indigo-50 text-indigo-500"
         }
@@ -81,7 +79,7 @@ function calculateWinner(squares) {
   return null;
 }
 
-export default function TicTacToe() {
+export function TicTacToe() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
@@ -103,11 +101,10 @@ export default function TicTacToe() {
       <li key={move} className="mb-2">
         <button
           onClick={() => jumpTo(move)}
-          className={`w-full px-3 py-2 text-sm sm:text-base rounded-lg transition-colors ${
-            move === currentMove
-              ? "bg-purple-600 text-white"
-              : "bg-purple-100 text-purple-800 hover:bg-purple-200"
-          }`}
+          className={`w-full px-3 py-2 text-sm sm:text-base rounded-lg transition-colors ${move === currentMove
+            ? "bg-purple-600 text-white"
+            : "bg-purple-100 text-purple-800 hover:bg-purple-200"
+            }`}
         >
           {description}
         </button>
@@ -138,4 +135,28 @@ export default function TicTacToe() {
       </div>
     </div>
   );
+}
+
+export default function FinalTicTacToe() {
+  return (
+    <div className="min-h-screen bg-gray-50 p-8">
+      {/* Header/Description */}
+      <div className="max-w-3xl mx-auto mb-12 text-center">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">My Coding Journey</h1>
+        <p className="text-lg text-gray-600 leading-relaxed">
+          This is where I experiment and build daily. Some projects are polished, others are works in progress, but each one helps me grow. Built with passion and React.
+        </p>
+      </div>
+
+      {/* Tic-Tac-Toe Container */}
+      <div className="max-w-lg mx-auto border-2 border-gray-200 rounded-xl p-6 shadow-md bg-white">
+        <TicTacToe />
+      </div>
+
+      {/* Optional Footer */}
+      <div className="mt-12 text-center text-gray-500 text-sm">
+        Made with Vite + React + Tailwind
+      </div>
+    </div>
+  )
 }
